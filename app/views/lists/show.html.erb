@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @list.title %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @list.text %>
+</p>
+
+<h2>List of tasks</h2>
+<% @list.tasks.each do |task| %>
+  <p>
+	<strong>Description:</strong>
+	<%= task.description %>
+  </p>
+ 
+  <p>
+	<strong>Due date:</strong>
+	<%= task.duedate %>
+  </p>
+	<p><%= link_to 'Destroy task', [task.list, task],
+			   method: :delete,
+			   data: { confirm: 'Are you sure?' } %>
+	</p>
+<% end %>
+
+<h2>Add a todo item:</h2>
+<%= form_for([@list, @list.tasks.build]) do |f| %>
+<div class="field">
+	<%= f.label :description %><br>
+	<%= f.text_area :description %>
+  </div>
+  <div class="field">
+	<%= f.label :duedate %><br>
+	<%= f.datetime_select :duedate %>
+  </div>
+
+  <div class="actions">
+	<%= f.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Edit', edit_list_path(@list) %> |
+<%= link_to 'Back', lists_path %>
