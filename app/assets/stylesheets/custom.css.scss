@@ -1,0 +1,33 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.title{
+	color: pink;
+	background-color: #FFEA96;
+	
+}
+
+.desc{
+	color: grey;
+}
+
+.show {
+	background-color: #09bc26;
+	padding:20px;
+
+}
+
+.edit {
+	background-color: #FFEA96;
+	padding:20px;
+
+}
+
+.destroy {
+	background-color: #ff4141;
+
+}
+
+.margin {
+	margin-bottom:20px;
+}

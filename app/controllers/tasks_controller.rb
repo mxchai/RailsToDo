@@ -52,7 +52,6 @@ class TasksController < ApplicationController
 		respond_to do |format|
 			if @task.update(task_params)
 				format.html { redirect_to @list, success: 'Task was successfully updated.' }
-				format.json { render :show, status: :ok, location: @list }
 			else
 				format.html { redirect_to @list, notice: 'Failed' }
 			end
@@ -69,8 +68,7 @@ class TasksController < ApplicationController
 			if @task.destroy
 				format.html { redirect_to @list, notice: 'Task was successfully destroyed.' }
 			end
-		end
-	
+		end	
 	end
 
 	private

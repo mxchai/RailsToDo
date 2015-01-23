@@ -7,11 +7,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+<div class="container" style="max-width:730px">
+<%= image_tag 'todo_logo.png', { :class => 'image-responsive', :style => 'margin-top:20px' }%>
+
 <% flash.each do |key, value| %>
-  <div class="flash <%= key %>"><%= value %></div>
+  <div class="alert alert-success"><%= value %></div>
 <% end %>
 
 <%= yield %>
+
+</div>
 
 </body>
 </html>
