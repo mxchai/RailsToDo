@@ -1,47 +1,43 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Title:</strong>
-  <%= @list.title %>
+	<strong>Title:</strong>
+	<%= @list.title %>
 </p>
 
 <p>
-  <strong>Text:</strong>
-  <%= @list.text %>
+	<strong>Text:</strong>
+	<%= @list.text %>
 </p>
+<%= link_to 'Back', lists_path %>
+<%= link_to 'Edit list title / description', edit_list_path(@list) %>
 
 <h2>List of tasks</h2>
-<% @list.tasks.each do |task| %>
-  <p>
-	<strong>Description:</strong>
-	<%= task.description %>
-  </p>
- 
-  <p>
-	<strong>Due date:</strong>
-	<%= task.duedate %>
-  </p>
-	<p><%= link_to 'Destroy task', [task.list, task],
-			   method: :delete,
-			   data: { confirm: 'Are you sure?' } %>
-	</p>
-<% end %>
+	<% @list.tasks.each do |task| %>
+		
+		<div style="background-color:#FFEA96">
+		<p>
+			<strong>Description:</strong>
+			<%= task.description %>
+		</p>
+	 
+	  	<p>
+			<strong>Due date:</strong>
+			<%= task.duedate %>
+	  	</p>
 
-<h2>Add a todo item:</h2>
-<%= form_for([@list, @list.tasks.build]) do |f| %>
-<div class="field">
-	<%= f.label :description %><br>
-	<%= f.text_area :description %>
-  </div>
-  <div class="field">
-	<%= f.label :duedate %><br>
-	<%= f.datetime_select :duedate %>
-  </div>
+		<p><%= link_to 'Delete', [task.list, task],
+				   method: :delete,
+				   data: { confirm: 'Are you sure?' } %>
+			<%= link_to 'Edit', edit_list_task_path(list_id:@list.id, id:task.id) %>
+			Tags: <%= raw task.tag_list.map { |t| link_to t, list_tag_path(:tag => t, :list_id => @list.id) }.join(', ') %>
+		</p>
+		</div>
 
-  <div class="actions">
-	<%= f.submit %>
-  </div>
-<% end %>
+	<% end %>
 
-<%= link_to 'Edit', edit_list_path(@list) %> |
-<%= link_to 'Back', lists_path %>
+<%= render "tasks/form", locals: {list_id: @list.id} %>
+
+
+
+

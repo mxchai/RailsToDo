@@ -2,7 +2,13 @@ Rails.application.routes.draw do
 
   resources :lists do
     resources :tasks
+      get 'tags/:tag', to: 'tasks#index', as: :tag
   end
+
+  root 'lists#index'
+
+  # this needs to be changed to something that makes more sense
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
