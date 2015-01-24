@@ -34,7 +34,7 @@ class TasksController < ApplicationController
 		respond_to do |format|
 			if @task.save
 				format.html { 
-					flash[:success] = "successfully created"
+					flash[:success] = "Task is successfully created"
 					redirect_to @list
 				 }
 			else
@@ -51,7 +51,7 @@ class TasksController < ApplicationController
 
 		respond_to do |format|
 			if @task.update(task_params)
-				format.html { redirect_to @list, success: 'Task was successfully updated.' }
+				format.html { redirect_to @list, success: 'Task is successfully updated.' }
 			else
 				format.html { redirect_to @list, notice: 'Failed' }
 			end
@@ -66,7 +66,7 @@ class TasksController < ApplicationController
 
 		respond_to do |format|
 			if @task.destroy
-				format.html { redirect_to @list, notice: 'Task was successfully destroyed.' }
+				format.html { redirect_to @list, notice: 'Task is successfully deleted.' }
 			end
 		end	
 	end

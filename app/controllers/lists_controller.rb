@@ -28,7 +28,7 @@ class ListsController < ApplicationController
 
     respond_to do |format|
       if @list.save
-        format.html { redirect_to lists_path, notice: 'List was successfully created.' }
+        format.html { redirect_to lists_path, notice: 'List is successfully created.' }
       else
         format.html { render :new }
       end
@@ -40,7 +40,7 @@ class ListsController < ApplicationController
   def update
     respond_to do |format|
       if @list.update(list_params)
-        format.html { redirect_to lists_path, notice: 'List was successfully updated.' }
+        format.html { redirect_to lists_path, notice: 'List is successfully updated.' }
       else
         format.html { render :edit }
       end
@@ -52,7 +52,7 @@ class ListsController < ApplicationController
   def destroy
     @list.destroy
     respond_to do |format|
-      format.html { redirect_to lists_path, notice: 'List was successfully destroyed.' }
+      format.html { redirect_to lists_path, notice: 'List is successfully deleted.' }
     end
   end
 
