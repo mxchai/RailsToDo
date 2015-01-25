@@ -1,29 +1,24 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Tasks</h1>
+<h3>Listing Tasks tagged with '<%= params[:tag] %>'</h3>
 
-<table>
-  <thead>
-    <tr>
-      <th>Description</th>
-      <th>Duedate</th>
-      <th>Completed</th>
-      <th>Tags</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <ul class="list-group">
+  <% @tasks.each do |task| %>
+    <li class="list-group-item">
+      <h4><%= task.description %></h4>
+      <p>
+      <% if task.duedate %>
+        <strong>Due date:</strong>
+        <%= task.duedate %>
+      <% end %>
+      </p>
+      
+      <div style="align-right; width:100%">
+    </li>
 
-  <tbody>
-    <% @tasks.each do |task| %>
-      <tr>
-        <td><%= task.description %></td>
-        <td><%= task.duedate %></td>
-        <td><%= task.completed %></td>
-        <td><%= task.tag_list %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <% end %>
+  </ul>
 
-<br>
+<%= link_to 'Back', :back, { :class => 'btn btn-default' } %>
+
 

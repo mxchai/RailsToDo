@@ -5,14 +5,14 @@
 			<%= f.text_field :description, { :class => 'form-control' } %>
 	</div>
 
-	<div class="field">
-		<%= f.label :duedate %><br>
-		<%= f.datetime_select :duedate, {include_blank: true, default: nil} %>
-	</div>
-
 	<div class="input-group margin">
 		<span class="input-group-addon" id="basic-addon1">Tags (seperated by commas)</span>
 			<%= f.text_field :tag_list, { :class => 'form-control' } %>
+	</div>
+
+	<div class="field">
+		<h5>Due date</h5>
+		<%= f.datetime_select :duedate, {include_blank: true, default: nil} %>
 	</div>
 
 
@@ -22,4 +22,3 @@
 
 <% end %>
 
-<%= link_to 'Back', lists_path, { :class => 'btn btn-default' } %>

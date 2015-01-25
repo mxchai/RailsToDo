@@ -71,6 +71,16 @@ class TasksController < ApplicationController
 		end	
 	end
 
+	def complete
+		@list = List.find(params[:list_id])
+		@task = @list.tasks.find(params[:id])
+		@task.completed = true
+
+		if @task.save
+			redirect_to @list
+		end
+	end
+
 	private
 		# Use callbacks to share common setup or constraints between actions.
 		def set_task
